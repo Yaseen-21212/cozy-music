@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="sakura">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cozy Chill Station</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts for a clean, modern cozy look -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@300..700&family=Quicksand:wght@400..700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Pill-shaped Theme Switcher -->
+    <div class="theme-bar">
+        <button class="theme-btn sakura-btn active" onclick="setTheme('sakura', this)">🌸 Sakura</button>
+        <button class="theme-btn mint-btn" onclick="setTheme('mint', this)">🌱 Mint</button>
+        <button class="theme-btn cyan-btn" onclick="setTheme('cyan', this)">☁️ Clouds</button>
+        <button class="theme-btn" onclick="setTheme('charcoal')">🖤 Charcoal</button>
+        <button class="theme-btn" onclick="setTheme('cookie')">🍪 Cookie</button>
+    </div>
+
+    <!-- 🥠 Daily Fortune Cookie Section -->
+<div class="glass-panel cookie-panel" style="margin-top: 20px; padding: 20px; text-align: center;">
+    <button id="cookie-btn" class="theme-btn cookie-custom-btn" onclick="crackCookie()">
+        🥠 Crack Daily Cookie
+    </button>
+    <p id="cookie-display" class="status-bubble" style="margin-top: 15px; font-style: italic;">
+        You haven't checked your fortune today...
+    </p>
+</div>
+
+<br><br>
+
+    <div class="main-layout">
+        <!-- Left Column: Audio Station -->
+        <div class="glass-panel station-panel">
+           <!-- Inside index.html, replace your current .panel-header with this: -->
+<div class="panel-header">
+    <h2>🎵 Lo-Fi Station</h2>
+    <p id="track-title" class="track-title">Loading track...</p>
+    
+    <!-- New Scrollable Tracklist Container -->
+    <div id="tracklist-container" class="tracklist-scroll-box">
+        <!-- JavaScript will automatically insert your tracks here -->
+    </div>
+</div>
+            
+            <!-- Music Controller Design -->
+            <!-- Inside index.html, update your .player-card section to look like this: -->
+<div class="player-card">
+    <div class="controls-row">
+        <button id="prev-btn" class="ctrl-btn">⏮</button>
+        <button id="play-btn" class="ctrl-btn play-main">▶ Play</button>
+        <button id="next-btn" class="ctrl-btn">⏭</button>
+    </div>
+
+    <!-- New Song Length Progress Bar Section -->
+    <div class="progress-container">
+        <span id="current-time" class="time-stamp">0:00</span>
+        <div class="progress-bar-wrapper" id="progress-wrapper">
+            <div id="progress-fill" class="progress-fill-bar"></div>
+        </div>
+        <span id="total-duration" class="time-stamp">0:00</span>
+    </div>
+</div>
+
+            <!-- Ambient Sound Mixer -->
+<div class="mixer-section">
+    <h3>🌧️ Environmental Layers</h3>
+    
+    <!-- Rain Slider -->
+    <div class="slider-group">
+        <div class="slider-header">
+            <span>Rainfall</span>
+            <span id="rain-val" class="vol-indicator">Off</span>
+        </div>
+        <input type="range" id="rain-slider" min="0" max="1" step="0.05" value="0">
+    </div>
+
+    <!-- Fireplace Slider -->
+    <div class="slider-group">
+        <div class="slider-header">
+            <span>Fireplace Crackle</span>
+            <span id="fire-val" class="vol-indicator">Off</span>
+        </div>
+        <input type="range" id="fire-slider" min="0" max="1" step="0.05" value="0">
+    </div>
+
+    <!-- 🔮 Water Bubbles Slider (Fixed Location) -->
+    <div class="slider-group">
+        <div class="slider-header">
+            <span>Water Bubbles</span>
+            <span id="bubbles-readout" class="vol-indicator">Off</span>
+        </div>
+        <input type="range" id="bubbles-slider" min="0" max="1" step="0.01" value="0">
+    </div>
+</div>
+        </div>
+
+        <!-- Right Column: Interactive Companion -->
+        <div class="glass-panel pet-panel">
+            <h2>🐱 Cozy Companion</h2>
+            
+            <div id="cat-box" class="cat-interactive" onclick="petCat()">
+                <!-- Floating heart effectcontainer -->
+                <div id="heart-container"></div>
+                <div id="cat-sprite">(=ↀωↀ=)</div>
+            </div>
+
+            <div class="pet-stats">
+                <div class="stat-badge">
+                    <span class="stat-label">Purr Level</span>
+                    <span id="pet-count" class="stat-value">0</span>
+                </div>
+                <p id="cat-status" class="status-bubble">The cat is stretching its paws...</p>
+            </div>
+        </div>
+
+        
+    
+
+    
+
+<!-- Background Audio Element -->
+
+
+    <!-- Hidden Audio Streams -->
+    <audio id="rain-audio" loop src="audio/Rain1.mp3"></audio>
+    <audio id="fire-audio" loop src="audio/Fire1.mp3"></audio>
+    <audio id="bubbles-audio" loop src="audio/WaterBubbles.mp3"></audio>
+
+    <script src="script.js"></script>
+</body>
+</html>

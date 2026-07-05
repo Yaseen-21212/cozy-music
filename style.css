@@ -1,0 +1,469 @@
+/* --- THEME ROOT CONFIGURATIONS --- */
+[data-theme="sakura"] {
+    --bg-gradient: linear-gradient(135deg, #fff5f5 0%, #ffd6e8 100%);
+    --panel-bg: rgba(255, 240, 245, 0.65);
+    --panel-border: rgba(255, 182, 193, 0.4);
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --accent: #ff8da1;
+    --accent-hover: #ff738c;
+    --text-main: #5c3a43;
+    --text-muted: #8c6570;
+    --shadow: rgba(255, 141, 161, 0.15);
+}
+
+[data-theme="mint"] {
+    --bg-gradient: linear-gradient(135deg, #f4faf6 0%, #c8e6c9 100%);
+    --panel-bg: rgba(241, 248, 233, 0.65);
+    --panel-border: rgba(165, 214, 167, 0.4);
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --accent: #66bb6a;
+    --accent-hover: #4caf50;
+    --text-main: #2b472e;
+    --text-muted: #557a59;
+    --shadow: rgba(102, 187, 106, 0.15);
+}
+
+[data-theme="cyan"] {
+    --bg-gradient: linear-gradient(135deg, #f0faff 0%, #b2ebf2 100%);
+    --panel-bg: rgba(224, 247, 250, 0.55);
+    --panel-border: rgba(128, 222, 234, 0.4);
+    --card-bg: rgba(255, 255, 255, 0.7);
+    --accent: #26c6da;
+    --accent-hover: #00bcd4;
+    --text-main: #1c3d42;
+    --text-muted: #496e75;
+    --shadow: rgba(38, 198, 218, 0.15);
+}
+
+[data-theme="charcoal"] {
+    --bg-gradient: linear-gradient(135deg, #141416 0%, #202024 100%);
+    --panel-bg: rgba(32, 32, 36, 0.65);
+    --panel-border: rgba(255, 255, 255, 0.08);
+    --card-bg: rgba(40, 40, 46, 0.7);
+    --accent: #5a5a66;
+    --accent-hover: #787885;
+    --text-main: #e3e3e6;
+    --text-muted: #8a8a93;
+    --shadow: rgba(0, 0, 0, 0.4);
+}
+
+[data-theme="cookie"] {
+    --bg-gradient: linear-gradient(135deg, #170d0a 0%, #261712 100%); /* Deep, dark chocolate base */
+    --panel-bg: rgba(43, 27, 22, 0.65); /* Rich cocoa panel background */
+    --panel-border: rgba(210, 180, 140, 0.12); /* Subtle beige border glow */
+    --card-bg: rgba(56, 36, 30, 0.75); /* Dark chocolate card layers */
+    --accent: #d2b48c; /* Warm cookie beige */
+    --accent-hover: #e6ccaa; /* Lighter cream-beige for hover states */
+    --text-main: #f5f0eb; /* Bright milk-froth text for high readability */
+    --text-muted: #a3897c; /* Soft, faded cocoa text */
+    --shadow: rgba(10, 5, 3, 0.6); /* Heavy dark shadow for deep contrast */
+}
+
+
+
+/* --- GENERAL RESET & LAYOUT --- */
+body {
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-family: "Quicksand", sans-serif;
+    background: var(--bg-gradient);
+    color: var(--text-main);
+    padding: 20px;
+    box-sizing: border-box;
+    transition: background 0.8s ease, color 0.5s ease;
+}
+
+h2, h3 {
+    font-family: "Fredoka", sans-serif;
+    font-weight: 600;
+    margin-top: 0;
+}
+
+/* --- DESIGNER THEME BAR --- */
+/* Find your .theme-bar in style.css and update it to this: */
+.theme-bar {
+    display: flex;
+    flex-wrap: wrap;       /* Allows buttons to drop to a second row cleanly on tiny screens */
+    justify-content: center;
+    gap: 4px;              /* Keeps small spacing between the wrapped buttons */
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.6);
+    padding: 6px;
+    border-radius: 30px;
+    margin-bottom: 30px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.04);
+}
+
+.theme-btn {
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    font-family: "Quicksand", sans-serif;
+    font-weight: 700;
+    font-size: 0.9rem;
+    cursor: pointer;
+    background: transparent;
+    color: #666;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.theme-btn:hover {
+    color: #000;
+}
+
+/* Active Styling Based on Selection */
+.theme-bar .active.sakura-btn { background: #ffeaef; color: #d85c72; }
+.theme-bar .active.mint-btn { background: #e8f5e9; color: #3b7a40; }
+.theme-bar .active.cyan-btn { background: #e0f7fa; color: #00838f; }
+
+/* --- GRID MAIN LAYOUT --- */
+.main-layout {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: 25px;
+    max-width: 850px;
+    width: 100%;
+}
+
+@media (max-width: 768px) {
+    .main-layout {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* --- FROSTED GLASS PANELS --- */
+.glass-panel {
+    background: var(--panel-bg);
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    border: 1px solid var(--panel-border);
+    border-radius: 32px;
+    padding: 30px;
+    box-shadow: 0 20px 40px var(--shadow);
+    transition: all 0.5s ease;
+}
+
+/* --- MUSIC PLAYER INTERIOR --- */
+.panel-header {
+    margin-bottom: 20px;
+}
+
+.track-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--text-muted);
+    background: var(--card-bg);
+    padding: 10px 15px;
+    border-radius: 16px;
+    display: inline-block;
+    margin: 5px 0 0 0;
+}
+
+.player-card {
+    background: var(--card-bg);
+    border-radius: 24px;
+    padding: 20px;
+    margin-bottom: 25px;
+}
+
+.controls-row {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    align-items: center;
+}
+
+.ctrl-btn {
+    background: transparent;
+    border: 2px solid var(--panel-border);
+    color: var(--text-main);
+    font-size: 1.2rem;
+    padding: 12px 20px;
+    border-radius: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.ctrl-btn:hover {
+    background: var(--card-bg);
+    transform: translateY(-2px);
+}
+
+.ctrl-btn.play-main {
+    background: var(--accent);
+    color: white;
+    border: none;
+    font-weight: 700;
+    padding: 14px 32px;
+    box-shadow: 0 8px 15px var(--shadow);
+}
+
+.ctrl-btn.play-main:hover {
+    background: var(--accent-hover);
+    transform: translateY(-2px);
+    box-shadow: 0 12px 20px var(--shadow);
+}
+
+/* --- MIXER REGION --- */
+.mixer-section h3 {
+    color: var(--text-main);
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.slider-group {
+    margin-bottom: 18px;
+}
+
+.slider-header {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 0.95rem;
+    margin-bottom: 6px;
+}
+
+.vol-indicator {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+}
+
+/* Custom aesthetic sliders */
+.slider-group input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: var(--card-bg);
+    outline: none;
+    transition: all 0.2s;
+}
+
+.slider-group input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent);
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+    transition: transform 0.1s, background 0.3s;
+}
+
+.slider-group input[type="range"]::-webkit-slider-thumb:hover {
+    transform: scale(1.2);
+    background: var(--accent-hover);
+}
+
+/* --- CAT INTERACTION PANEL --- */
+.pet-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.cat-interactive {
+    position: relative;
+    background: var(--card-bg);
+    width: 100%;
+    max-width: 220px;
+    height: 220px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px 0;
+    cursor: pointer;
+    box-shadow: inset 0 4px 10px rgba(0,0,0,0.02);
+    user-select: none;
+}
+
+#cat-sprite {
+    font-size: 2.5rem;
+    transition: transform 0.15s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+/* Heart animations when petting */
+.heart {
+    position: absolute;
+    color: var(--accent);
+    font-size: 1.5rem;
+    animation: floatUp 0.8s ease-out forwards;
+    pointer-events: none;
+}
+
+@keyframes floatUp {
+    0% { transform: translateY(0) scale(0.5); opacity: 1; }
+    100% { transform: translateY(-80px) scale(1.2); opacity: 0; }
+}
+
+.pet-stats {
+    width: 100%;
+    text-align: center;
+}
+
+.stat-badge {
+    background: var(--card-bg);
+    padding: 10px 20px;
+    border-radius: 16px;
+    display: inline-flex;
+    gap: 15px;
+    align-items: center;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.stat-label { color: var(--text-muted); font-size: 0.9rem; }
+.stat-value { color: var(--accent); font-size: 1.2rem; }
+
+.status-bubble {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: var(--text-muted);
+    min-height: 40px;
+    margin: 0;
+}
+/* --- SCROLLING TRACKLIST WINDOW --- */
+.tracklist-scroll-box {
+    max-height: 180px; 
+    overflow-y: auto;  
+    margin-top: 15px;
+    padding: 10px;     
+    background: rgba(0, 0, 0, 0.02); 
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;          
+    box-sizing: border-box;
+}
+
+/* Custom modern scrollbar design */
+.tracklist-scroll-box::-webkit-scrollbar {
+    width: 6px;
+}
+.tracklist-scroll-box::-webkit-scrollbar-track {
+    background: transparent;
+}
+.tracklist-scroll-box::-webkit-scrollbar-thumb {
+    background: var(--panel-border);
+    border-radius: 10px;
+}
+
+/* Individual track items */
+.playlist-item {
+    /* Fixed equal padding on top and bottom (10px) and left and right (16px) */
+    padding: 10px 16px;       
+    border-radius: 12px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    
+    /* Using Flexbox guarantees perfect vertical centering from top to bottom */
+    display: flex;
+    align-items: center;      
+    text-align: left; /* Restored left-to-right alignment */
+    
+    cursor: pointer;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;   
+    transition: all 0.2s ease;
+    color: var(--text-muted);
+    
+    /* Removed line-height and height restrictions to allow natural vertical balancing */
+    height: auto;             
+}
+
+.playlist-item:hover {
+    background: var(--card-bg);
+    color: var(--text-main);
+    padding-left: 20px; /* Restored the smooth left-to-right nudge animation */
+}
+
+/* Active track highlighting */
+.playlist-item.active-track {
+    background: var(--accent);
+    color: white !important;   
+    box-shadow: 0 4px 12px var(--shadow);
+}
+
+/* --- SONG LENGTH PROGRESS BAR --- */
+.progress-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 20px; /* Pushes it neatly under the play/pause button row */
+    padding: 0 5px;
+}
+
+.time-stamp {
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: var(--text-muted);
+    min-width: 35px;
+}
+
+#current-time {
+    text-align: right;
+}
+
+#total-duration {
+    text-align: left;
+}
+
+/* The clickable background track */
+.progress-bar-wrapper {
+    flex: 1;
+    height: 6px;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    cursor: pointer;
+    position: relative;
+    transition: height 0.1s ease;
+}
+
+.progress-bar-wrapper:hover {
+    height: 8px; /* Subtle widening on hover makes it easier to click */
+}
+
+/* The actual colored filling that represents song completion */
+.progress-fill-bar {
+    height: 100%;
+    width: 0%; /* Starts at zero and handles via JavaScript */
+    background: var(--accent);
+    border-radius: 10px;
+    transition: width 0.1s linear; /* Smooth micro-movements */
+}
+
+/* Custom Styling for the Fortune Cookie Button */
+.cookie-custom-btn {
+    background: var(--card-bg); 
+    color: var(--text-main); 
+    border: 1px solid var(--panel-border); 
+    padding: 10px 20px; 
+    border-radius: 20px; 
+    cursor: pointer; 
+    font-weight: bold; 
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px var(--shadow);
+}
+
+/* What happens when you hover over it */
+.cookie-custom-btn:hover:not(:disabled) {
+    background: var(--accent);
+    color: #ffffff;
+    transform: translateY(-1px);
+}
+
+/* What happens when it's locked for the day */
+.cookie-custom-btn:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+    background: var(--panel-bg);
+}
