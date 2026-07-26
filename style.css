@@ -467,3 +467,29 @@ h2, h3 {
     opacity: 0.5;
     background: var(--panel-bg);
 }
+
+/* Custom Loop Button - Default (OFF) State */
+#loop-btn {
+    background: var(--card-bg); 
+    color: var(--text-main); 
+    border: none; 
+    padding: 10px 20px; 
+    border-radius: 25px; /* Smooth pill shape like Morning Side */
+    cursor: pointer; 
+    font-weight: bold; 
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 6px var(--shadow);
+}
+
+/* Hover state when OFF */
+#loop-btn:hover:not(.active) {
+    background: var(--accent-hover);
+    transform: translateY(-1px);
+}
+
+/* Active (ON) State */
+#loop-btn.active {
+    background: var(--accent);
+    color: #ffffff;
+    box-shadow: 0 0 10px var(--accent);
+}
