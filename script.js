@@ -17,6 +17,7 @@ const playlist = [
 
 let currentTrackIndex = 0;
 let isPlaying = false;
+let isLooping = false;
 let lofiAudio = new Audio();
 
 // Elements
@@ -108,13 +109,19 @@ document.getElementById('prev-btn').addEventListener('click', () => {
 });
 
 lofiAudio.addEventListener('ended', () => {
-    currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
-    loadTrack(currentTrackIndex);
-    lofiAudio.play().catch(e => console.log("Playback error: ", e));
-    
-    // Extra safety: Make sure UI stays on pause button when auto-advancing
-    isPlaying = true;
-    playBtn.innerText = "⏸ Pause";
+    if (isLooping) {
+        // If loop is ON, replay current song instantly
+        lofiAudio.currentTime = 0;
+        lofiAudio.play().catch(e => console.log("Playback error: ", e));
+    } else {
+        // If loop is OFF, move to the next song normally
+        currentTrackIndex = (currentTrackIndex + 1) % playlist.length;
+        loadTrack(currentTrackIndex);
+        lofiAudio.play().catch(e => console.log("Playback error: ", e));
+        
+        isPlaying = true;
+        playBtn.innerText = "⏸ Pause";
+    }
 });
 
 // (Keep the rest of your ambient mixer, cat petting, and theme toggle code exactly as it was!)
@@ -341,3 +348,18 @@ function checkDailyCookieStatus() {
 // Instead of creating a new event listener, you can just safely call this 
 // inside your main initialization function if you prefer!
 window.addEventListener('DOMContentLoaded', checkDailyCookieStatus);
+
+function toggleLoop() {
+    const loopBtn = document.getElementById('loop-btn');
+    if (!loopBtn) return;
+
+    isLooping = !isLooping;
+
+    if (isLooping) {
+        loopBtn.innerText = "🔁 Loop: ON";
+        loopBtn.classList.add('active');
+    } else {
+        loopBtn.innerText = "🔁 Loop: OFF";
+        loopBtn.classList.remove('active');
+    }
+}
