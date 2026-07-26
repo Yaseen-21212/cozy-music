@@ -199,11 +199,7 @@ h2, h3 {
     color: white;
     border: none;
     font-weight: 700;
-    padding: 14px 0; /* Vertical padding only, let width control horizontal space */
-    width: 140px;    /* Locks the button to a static size in both states */
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
+    padding: 14px 32px;
     box-shadow: 0 8px 15px var(--shadow);
 }
 
