@@ -1,38 +1,40 @@
-/* --- THEME ROOT CONFIGURATIONS --- */
+/* --- SAKURA (Bright Light Pink) --- */
 [data-theme="sakura"] {
-    --bg-gradient: linear-gradient(135deg, #fff5f5 0%, #ffd6e8 100%);
-    --panel-bg: rgba(255, 240, 245, 0.65);
-    --panel-border: rgba(255, 182, 193, 0.4);
-    --card-bg: rgba(255, 255, 255, 0.7);
-    --accent: #ff8da1;
-    --accent-hover: #ff738c;
-    --text-main: #5c3a43;
-    --text-muted: #8c6570;
-    --shadow: rgba(255, 141, 161, 0.15);
+    --bg-gradient: linear-gradient(135deg, #fff0f5 0%, #ffe4e9 50%, #ffd6df 100%);
+    --panel-bg: rgba(255, 255, 255, 0.7);
+    --panel-border: rgba(255, 105, 135, 0.4);
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --accent: #ff477e; /* Rich bright pink that stands out */
+    --accent-hover: #ff1456;
+    --text-main: #4a1224; /* Deep dark berry text for crisp readability */
+    --text-muted: #9e5b70;
+    --shadow: rgba(255, 71, 126, 0.2);
 }
 
+/* --- MINT (Bright Light Green) --- */
 [data-theme="mint"] {
-    --bg-gradient: linear-gradient(135deg, #f4faf6 0%, #c8e6c9 100%);
-    --panel-bg: rgba(241, 248, 233, 0.65);
-    --panel-border: rgba(165, 214, 167, 0.4);
-    --card-bg: rgba(255, 255, 255, 0.7);
-    --accent: #66bb6a;
-    --accent-hover: #4caf50;
-    --text-main: #2b472e;
-    --text-muted: #557a59;
-    --shadow: rgba(102, 187, 106, 0.15);
+    --bg-gradient: linear-gradient(135deg, #f0fdf4 0%, #dcfce7 50%, #bbf7d0 100%);
+    --panel-bg: rgba(255, 255, 255, 0.7);
+    --panel-border: rgba(34, 197, 94, 0.4);
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --accent: #16a34a; /* Vibrant emerald mint accent */
+    --accent-hover: #15803d;
+    --text-main: #0a3a1b; /* Deep dark forest text for crisp readability */
+    --text-muted: #4e805f;
+    --shadow: rgba(22, 163, 74, 0.2);
 }
 
+/* --- CLOUDS (Bright Light Cyan) --- */
 [data-theme="cyan"] {
-    --bg-gradient: linear-gradient(135deg, #f0faff 0%, #b2ebf2 100%);
-    --panel-bg: rgba(224, 247, 250, 0.55);
-    --panel-border: rgba(128, 222, 234, 0.4);
-    --card-bg: rgba(255, 255, 255, 0.7);
-    --accent: #26c6da;
-    --accent-hover: #00bcd4;
-    --text-main: #1c3d42;
-    --text-muted: #496e75;
-    --shadow: rgba(38, 198, 218, 0.15);
+    --bg-gradient: linear-gradient(135deg, #ecfeff 0%, #cffafe 50%, #a5f3fc 100%);
+    --panel-bg: rgba(255, 255, 255, 0.7);
+    --panel-border: rgba(6, 182, 212, 0.4);
+    --card-bg: rgba(255, 255, 255, 0.85);
+    --accent: #0891b2; /* Vivid cyan-teal accent */
+    --accent-hover: #0e7490;
+    --text-main: #083344; /* Deep dark oceanic text for crisp readability */
+    --text-muted: #4c7785;
+    --shadow: rgba(8, 145, 178, 0.2);
 }
 
 [data-theme="charcoal"] {
@@ -58,6 +60,53 @@
     --text-muted: #a3897c; /* Soft, faded cocoa text */
     --shadow: rgba(10, 5, 3, 0.6); /* Heavy dark shadow for deep contrast */
 }
+
+[data-theme="bloody"] {
+    --bg-gradient: linear-gradient(135deg, #0a0002 0%, #2a0008 50%, #050002 100%); /* Deep pitch black to blood red */
+    --panel-bg: rgba(20, 3, 7, 0.75); /* Dark crimson-tinted glass */
+    --panel-border: rgba(180, 0, 30, 0.25); /* Subtle dried-blood border */
+    --card-bg: rgba(35, 6, 12, 0.8); /* Dark blood red card background */
+    --accent: #d60d2e; /* Vivid blood red */
+    --accent-hover: #ff1e42; /* Bright crimson glow for hover */
+    --text-main: #f5e6e8; /* Pale bone white text for high contrast */
+    --text-muted: #a36872; /* Faded rose-gray muted text */
+    --shadow: rgba(180, 0, 30, 0.35); /* Crimson ambient shadow */
+}
+
+/* Active state for the theme bar button */
+.theme-bar .active.bloody-btn { 
+    background: #2a0008; 
+    color: #ff1e42; 
+    border: 1px solid rgba(255, 30, 66, 0.4);
+    box-shadow: 0 0 10px rgba(214, 13, 46, 0.5);
+}
+
+[data-theme="magic"] {
+    --bg-gradient: linear-gradient(135deg, #0f0a1e 0%, #200f38 50%, #0d122b 100%); /* Deep cosmic purple to dark space blue */
+    --panel-bg: rgba(30, 18, 52, 0.75); /* Rich violet-purple glass */
+    --panel-border: rgba(96, 165, 250, 0.35); /* Celestial electric blue border */
+    --card-bg: rgba(45, 25, 78, 0.8); /* Dark plum purple card background */
+    --accent: #ffd166; /* Bright star-yellow */
+    --accent-hover: #ffe08a; /* Warm golden-yellow glow for hover */
+    --text-main: #f3e8ff; /* Soft starry violet-white text */
+    --text-muted: #a38bc2; /* Mystic lavender-gray text */
+    --shadow: rgba(168, 85, 247, 0.3); /* Glowing purple ambient aura */
+}
+
+/* Active state for the theme bar button */
+.theme-bar .active.magic-btn { 
+    background: #200f38; 
+    color: #ffd166; 
+    border: 1px solid rgba(168, 85, 247, 0.6);
+    box-shadow: 0 0 12px rgba(168, 85, 247, 0.5), 0 0 4px rgba(255, 209, 102, 0.4);
+}
+
+.theme-bar .active.sakura-btn   { background: #ffeaef; color: #d85c72; border: 1px solid #ff8da1; box-shadow: 0 0 8px rgba(255, 141, 161, 0.4); }
+.theme-bar .active.mint-btn     { background: #e8f5e9; color: #3b7a40; border: 1px solid #66bb6a; box-shadow: 0 0 8px rgba(102, 187, 106, 0.4); }
+.theme-bar .active.cyan-btn     { background: #e0f7fa; color: #00838f; border: 1px solid #26c6da; box-shadow: 0 0 8px rgba(38, 198, 218, 0.4); }
+.theme-bar .active.clouds-btn   { background: #f0f4f8; color: #4a5568; border: 1px solid #cbd5e0; box-shadow: 0 0 8px rgba(203, 213, 224, 0.4); }
+.theme-bar .active.charcoal-btn { background: #28282e; color: #e3e3e6; border: 1px solid #787885; box-shadow: 0 0 8px rgba(0, 0, 0, 0.5); }
+.theme-bar .active.cookie-btn   { background: #38241e; color: #d2b48c; border: 1px solid #d2b48c; box-shadow: 0 0 8px rgba(210, 180, 140, 0.3); }
 
 
 
