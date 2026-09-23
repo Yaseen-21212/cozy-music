@@ -11,7 +11,12 @@ const playlist = [
     { title: "Snowfall", src: "audio/Snowfall.mp3" },
     { title: "Slowfade", src: "audio/SlowFade.mp3" },
     { title: "Hikari", src: "audio/Hikari.mp3" },
-    { title: "Clouds", src: "audio/Clouds.mp3" }
+    { title: "Clouds", src: "audio/Clouds.mp3" },
+    { title: "Solitude", src: "audio/Solitude.mp3" },
+    { title: "Beneath the Mask", src: "audio/Beneath the Mask.mp3" },
+    { title: "Nighttime", src: "audio/Nighttime.mp3" }
+    
+
 
 ];
 
@@ -283,11 +288,13 @@ const fortunes = [
     // --- Silly & Paranoid Warnings ---
     "If someone knocks on your door three times today... do not open it. 🚪",
     "Check behind you right now. Just kidding. Or am I? 👁️",
-    "If you hear your name whispered in an empty room today, just ignore it. 🤫",
+    "wtf is that you?",
     "Don't look directly into the mirror at exactly midnight tonight. 🪞",
-    "An inanimate object in your room is judging your life choices right now. 🧸",
-    "If a black cat stares at you today, you must bow back to show respect. 🐈‍⬛",
-    "A shadow in the corner of your room thinks your choice of background music is immaculate. 👻",
+    "Just leave my website already...",
+    "Be careful of block 212...",
+    "DON'T DO IT, I WARNED YOU.",
+    "KILL YOURSELF! just kidding don't do that :)",
+    "Womp womp nothing for you today.",
     "If you feel a sudden cold breeze, it's just a ghost trying to get cozy too. ❄️",
 
     // --- Everyday Luck & Surprises ---
@@ -363,3 +370,38 @@ function toggleLoop() {
         loopBtn.classList.remove('active');
     }
 }
+
+// --- THEME MANAGEMENT WITH LOCALSTORAGE ---
+
+// 1. Function to apply theme and save it to localStorage
+function setTheme(themeName) {
+    // Set the data-theme attribute on <html> or <body>
+    document.documentElement.setAttribute('data-theme', themeName);
+    
+    // Save the selected theme name in the browser's local storage
+    localStorage.setItem('selectedTheme', themeName);
+    
+    // Update active button state in the UI
+    updateActiveThemeButton(themeName);
+}
+
+// 2. Function to update the active button class
+function updateActiveThemeButton(activeTheme) {
+    const themeButtons = document.querySelectorAll('.theme-btn');
+    themeButtons.forEach(btn => {
+        // Remove active class from all theme buttons
+        btn.classList.remove('active');
+        
+        // Add active class if the button matches the current theme
+        if (btn.classList.contains(`${activeTheme}-btn`)) {
+            btn.classList.add('active');
+        }
+    });
+}
+
+// 3. Load saved theme when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+    // Check if there's a saved theme in localStorage, default to 'sakura' if none exists
+    const savedTheme = localStorage.getItem('selectedTheme') || 'sakura';
+    setTheme(savedTheme);
+});
