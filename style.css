@@ -73,14 +73,6 @@
     --shadow: rgba(180, 0, 30, 0.35); /* Crimson ambient shadow */
 }
 
-/* Active state for the theme bar button */
-.theme-bar .active.bloody-btn { 
-    background: #2a0008; 
-    color: #ff1e42; 
-    border: 1px solid rgba(255, 30, 66, 0.4);
-    box-shadow: 0 0 10px rgba(214, 13, 46, 0.5);
-}
-
 [data-theme="magic"] {
     --bg-gradient: linear-gradient(135deg, #0f0a1e 0%, #200f38 50%, #0d122b 100%); /* Deep cosmic purple to dark space blue */
     --panel-bg: rgba(30, 18, 52, 0.75); /* Rich violet-purple glass */
@@ -92,23 +84,6 @@
     --text-muted: #a38bc2; /* Mystic lavender-gray text */
     --shadow: rgba(168, 85, 247, 0.3); /* Glowing purple ambient aura */
 }
-
-/* Active state for the theme bar button */
-.theme-bar .active.magic-btn { 
-    background: #200f38; 
-    color: #ffd166; 
-    border: 1px solid rgba(168, 85, 247, 0.6);
-    box-shadow: 0 0 12px rgba(168, 85, 247, 0.5), 0 0 4px rgba(255, 209, 102, 0.4);
-}
-
-.theme-bar .active.sakura-btn   { background: #ffeaef; color: #d85c72; border: 1px solid #ff8da1; box-shadow: 0 0 8px rgba(255, 141, 161, 0.4); }
-.theme-bar .active.mint-btn     { background: #e8f5e9; color: #3b7a40; border: 1px solid #66bb6a; box-shadow: 0 0 8px rgba(102, 187, 106, 0.4); }
-.theme-bar .active.cyan-btn     { background: #e0f7fa; color: #00838f; border: 1px solid #26c6da; box-shadow: 0 0 8px rgba(38, 198, 218, 0.4); }
-.theme-bar .active.clouds-btn   { background: #f0f4f8; color: #4a5568; border: 1px solid #cbd5e0; box-shadow: 0 0 8px rgba(203, 213, 224, 0.4); }
-.theme-bar .active.charcoal-btn { background: #28282e; color: #e3e3e6; border: 1px solid #787885; box-shadow: 0 0 8px rgba(0, 0, 0, 0.5); }
-.theme-bar .active.cookie-btn   { background: #38241e; color: #d2b48c; border: 1px solid #d2b48c; box-shadow: 0 0 8px rgba(210, 180, 140, 0.3); }
-
-
 
 /* --- GENERAL RESET & LAYOUT --- */
 body {
@@ -133,12 +108,11 @@ h2, h3 {
 }
 
 /* --- DESIGNER THEME BAR --- */
-/* Find your .theme-bar in style.css and update it to this: */
 .theme-bar {
     display: flex;
-    flex-wrap: wrap;       /* Allows buttons to drop to a second row cleanly on tiny screens */
+    flex-wrap: wrap;       
     justify-content: center;
-    gap: 4px;              /* Keeps small spacing between the wrapped buttons */
+    gap: 4px;              
     background: rgba(255, 255, 255, 0.5);
     backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.6);
@@ -165,10 +139,39 @@ h2, h3 {
     color: #000;
 }
 
-/* Active Styling Based on Selection */
-.theme-bar .active.sakura-btn { background: #ffeaef; color: #d85c72; }
-.theme-bar .active.mint-btn { background: #e8f5e9; color: #3b7a40; }
-.theme-bar .active.cyan-btn { background: #e0f7fa; color: #00838f; }
+/* Universal Active State for Selected Theme Button */
+.theme-bar .theme-btn.active {
+    background: var(--card-bg);
+    color: var(--text-main);
+    border: 1px solid var(--accent);
+    box-shadow: 0 0 10px var(--shadow);
+}
+
+/* --- FROSTED GLASS PANELS (SHARED) --- */
+.glass-panel {
+    background: var(--panel-bg);
+    backdrop-filter: blur(16px) saturate(120%);
+    -webkit-backdrop-filter: blur(16px) saturate(120%);
+    border: 1px solid var(--panel-border);
+    border-radius: 32px;
+    padding: 30px;
+    box-shadow: 0 20px 40px var(--shadow);
+    transition: all 0.5s ease;
+    align-self: start;
+    height: fit-content;
+    box-sizing: border-box;
+}
+
+/* --- STANDALONE GLASS PANELS (FORTUNE COOKIE CENTERING FIX) --- */
+body > .glass-panel,
+.fortune-panel,
+.fortune-card {
+    width: 100% !important;
+    max-width: 850px !important;    /* Matches width of .main-layout */
+    margin: 0 auto 25px auto !important; /* Centers block horizontally */
+    align-self: center !important;  /* Overrides flex-start alignment on body */
+    text-align: center;
+}
 
 /* --- GRID MAIN LAYOUT --- */
 .main-layout {
@@ -181,20 +184,29 @@ h2, h3 {
 
 @media (max-width: 768px) {
     .main-layout {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 100%;
+        max-width: 100%;
+        padding: 0;
+        box-sizing: border-box;
     }
-}
 
-/* --- FROSTED GLASS PANELS --- */
-.glass-panel {
-    background: var(--panel-bg);
-    backdrop-filter: blur(16px) saturate(120%);
-    -webkit-backdrop-filter: blur(16px) saturate(120%);
-    border: 1px solid var(--panel-border);
-    border-radius: 32px;
-    padding: 30px;
-    box-shadow: 0 20px 40px var(--shadow);
-    transition: all 0.5s ease;
+    .glass-panel, 
+    .player-card, 
+    .fortune-panel, 
+    .fortune-card,
+    .theme-bar, 
+    .cat-panel,
+    .pet-panel {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        padding: 20px !important;
+        box-sizing: border-box !important;
+    }
 }
 
 /* --- MUSIC PLAYER INTERIOR --- */
@@ -225,6 +237,7 @@ h2, h3 {
     justify-content: center;
     gap: 15px;
     align-items: center;
+    width: 100%;
 }
 
 .ctrl-btn {
@@ -250,6 +263,16 @@ h2, h3 {
     font-weight: 700;
     padding: 14px 32px;
     box-shadow: 0 8px 15px var(--shadow);
+    display: inline-flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    min-width: 7em;
+    max-width: 100%;
+    height: 3.2rem;
+    white-space: nowrap;
+    box-sizing: border-box;
 }
 
 .ctrl-btn.play-main:hover {
@@ -378,6 +401,7 @@ h2, h3 {
     min-height: 40px;
     margin: 0;
 }
+
 /* --- SCROLLING TRACKLIST WINDOW --- */
 .tracklist-scroll-box {
     max-height: 180px; 
@@ -406,32 +430,26 @@ h2, h3 {
 
 /* Individual track items */
 .playlist-item {
-    /* Fixed equal padding on top and bottom (10px) and left and right (16px) */
     padding: 10px 16px;       
     border-radius: 12px;
     font-size: 0.95rem;
     font-weight: 600;
-    
-    /* Using Flexbox guarantees perfect vertical centering from top to bottom */
     display: flex;
     align-items: center;      
-    text-align: left; /* Restored left-to-right alignment */
-    
+    text-align: left;
     cursor: pointer;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;   
     transition: all 0.2s ease;
     color: var(--text-muted);
-    
-    /* Removed line-height and height restrictions to allow natural vertical balancing */
     height: auto;             
 }
 
 .playlist-item:hover {
     background: var(--card-bg);
     color: var(--text-main);
-    padding-left: 20px; /* Restored the smooth left-to-right nudge animation */
+    padding-left: 20px;
 }
 
 /* Active track highlighting */
@@ -447,7 +465,7 @@ h2, h3 {
     align-items: center;
     justify-content: space-between;
     gap: 12px;
-    margin-top: 20px; /* Pushes it neatly under the play/pause button row */
+    margin-top: 20px;
     padding: 0 5px;
 }
 
@@ -466,7 +484,6 @@ h2, h3 {
     text-align: left;
 }
 
-/* The clickable background track */
 .progress-bar-wrapper {
     flex: 1;
     height: 6px;
@@ -478,16 +495,15 @@ h2, h3 {
 }
 
 .progress-bar-wrapper:hover {
-    height: 8px; /* Subtle widening on hover makes it easier to click */
+    height: 8px;
 }
 
-/* The actual colored filling that represents song completion */
 .progress-fill-bar {
     height: 100%;
-    width: 0%; /* Starts at zero and handles via JavaScript */
+    width: 0%;
     background: var(--accent);
     border-radius: 10px;
-    transition: width 0.1s linear; /* Smooth micro-movements */
+    transition: width 0.1s linear;
 }
 
 /* Custom Styling for the Fortune Cookie Button */
@@ -503,14 +519,12 @@ h2, h3 {
     box-shadow: 0 4px 6px var(--shadow);
 }
 
-/* What happens when you hover over it */
 .cookie-custom-btn:hover:not(:disabled) {
     background: var(--accent);
     color: #ffffff;
     transform: translateY(-1px);
 }
 
-/* What happens when it's locked for the day */
 .cookie-custom-btn:disabled {
     cursor: not-allowed;
     opacity: 0.5;
@@ -523,20 +537,18 @@ h2, h3 {
     color: var(--text-main); 
     border: none; 
     padding: 10px 20px; 
-    border-radius: 25px; /* Smooth pill shape like Morning Side */
+    border-radius: 25px;
     cursor: pointer; 
     font-weight: bold; 
     transition: all 0.2s ease;
     box-shadow: 0 4px 6px var(--shadow);
 }
 
-/* Hover state when OFF */
 #loop-btn:hover:not(.active) {
     background: var(--accent-hover);
     transform: translateY(-1px);
 }
 
-/* Active (ON) State */
 #loop-btn.active {
     background: var(--accent);
     color: #ffffff;
