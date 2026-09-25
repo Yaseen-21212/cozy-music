@@ -222,9 +222,10 @@ h2, h3 {
 
 .controls-row {
     display: flex;
+    align-items: center;        /* Locks vertical center alignment */
     justify-content: center;
-    gap: 15px;
-    align-items: center;
+    gap: 12px;
+    width: 100%;
 }
 
 .ctrl-btn {
