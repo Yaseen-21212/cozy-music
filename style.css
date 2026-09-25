@@ -85,6 +85,19 @@
     --shadow: rgba(168, 85, 247, 0.3); /* Glowing purple ambient aura */
 }
 
+/* --- BANANA (Warm Bright Yellow) --- */
+[data-theme="banana"] {
+    --bg-gradient: linear-gradient(135deg, #fffde7 0%, #fef9c3 50%, #fef08a 100%);
+    --panel-bg: rgba(255, 255, 255, 0.75);
+    --panel-border: rgba(234, 179, 8, 0.35);
+    --card-bg: rgba(255, 255, 255, 0.88);
+    --accent: #eab308; /* Vibrant ripe banana yellow */
+    --accent-hover: #ca8a04; /* Deeper golden amber for hover */
+    --text-main: #422006; /* Dark toasted mahogany text for high contrast */
+    --text-muted: #854d0e; /* Warm golden-brown muted text */
+    --shadow: rgba(234, 179, 8, 0.25);
+}
+
 /* --- GENERAL RESET & LAYOUT --- */
 body {
     margin: 0;
@@ -139,12 +152,12 @@ h2, h3 {
     color: #000;
 }
 
-/* Universal Active State for Selected Theme Button */
+/* Active Selected Theme Button Style */
 .theme-bar .theme-btn.active {
-    background: var(--card-bg);
-    color: var(--text-main);
-    border: 1px solid var(--accent);
-    box-shadow: 0 0 10px var(--shadow);
+    background: var(--accent) !important;
+    color: #ffffff !important;
+    border: none !important;
+    box-shadow: 0 4px 12px var(--shadow), 0 0 10px var(--accent) !important;
 }
 
 /* --- FROSTED GLASS PANELS (SHARED) --- */
@@ -531,7 +544,7 @@ body > .glass-panel,
     background: var(--panel-bg);
 }
 
-/* Custom Loop Button - Default (OFF) State */
+/* Custom Loop Button - Reverted Standard Setup */
 #loop-btn {
     background: var(--card-bg); 
     color: var(--text-main); 
