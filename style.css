@@ -245,12 +245,22 @@ h2, h3 {
 }
 
 .ctrl-btn.play-main {
-    background: var(--accent);
-    color: white;
-    border: none;
-    font-weight: 700;
-    padding: 14px 32px;
-    box-shadow: 0 8px 15px var(--shadow);
+    display: inline-flex;
+    flex-direction: row;        /* Forces icon and text to stay on one line */
+    align-items: center;
+    justify-content: center;
+    gap: 8px;                   /* Clean spacing between icon and text */
+    
+    /* Flexible width limits instead of fixed px */
+    width: auto;
+    min-width: 7em;             /* Scales smoothly with dynamic font size */
+    max-width: 100%;
+    
+    /* Strict height bounds to stop vertical stretching */
+    height: 3.2rem;
+    padding: 0 1.2rem;
+    box-sizing: border-box;
+    white-space: nowrap;        /* Stops text from wrapping vertically */
 }
 
 .ctrl-btn.play-main:hover {
